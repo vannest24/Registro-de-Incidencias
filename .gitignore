@@ -1,0 +1,14 @@
+# Compilados de .NET
+bin/
+obj/
+
+# Node
+node_modules/
+
+# Archivos de Visual Studio
+.vs/
+*.user
+*.suo
+
+# Configuración local (opcional, si tiene secretos)
+# appsettings.Development.json
