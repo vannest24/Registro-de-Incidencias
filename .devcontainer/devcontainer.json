@@ -1,0 +1,19 @@
+{
+  "name": "RegistroIncidencias Dev",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "dotnet-app",
+  "workspaceFolder": "/app",
+  "overrideCommand": true,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.vscodeintellicode-csharp"
+      ]
+    }
+  },
+  "runServices": ["dotnet-app", "tailwind-watcher"],
+  "forwardPorts": [5000],
+  "remoteUser": "root"
+}
