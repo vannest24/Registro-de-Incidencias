@@ -11,4 +11,4 @@ node_modules/
 *.suo
 
 # Configuración local (opcional, si tiene secretos)
-# appsettings.Development.json
+appsettings.Development.json

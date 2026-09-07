@@ -1,8 +1,23 @@
+using Npgsql;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+
+// --- BLOQUE DE PRUEBA: quitar después de confirmar conexión ---
+var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+try
+{
+    await using var testConn = new NpgsqlConnection(connString);
+    await testConn.OpenAsync();
+    Console.WriteLine("✅ Conexión exitosa a Supabase");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"❌ Error de conexión: {ex.Message}");
+}
+// --- FIN BLOQUE DE PRUEBA ---
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
