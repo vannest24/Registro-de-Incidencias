@@ -1,5 +1,11 @@
+using Supabase;
 using Npgsql;
 var builder = WebApplication.CreateBuilder(args);
+
+var supabaseUrl = builder.Configuration["Supabase:Url"];
+var supabaseKey = builder.Configuration["Supabase:Key"];
+
+var options = new SupabaseOptions { AutoConnectRealtime = true };
 
 // Add services to the container.
 builder.Services.AddRazorPages();
