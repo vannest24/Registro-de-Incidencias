@@ -9,6 +9,7 @@ node_modules/
 .vs/
 *.user
 *.suo
+*.env
 
 # Configuración local (opcional, si tiene secretos)
-# appsettings.Development.json
+appsettings.Development.json

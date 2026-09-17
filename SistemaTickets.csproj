@@ -1,9 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>4f4a53c6-6297-4b65-9bf6-86190f654489</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="9.0.5" />
+    <PackageReference Include="supabase-csharp" Version="0.16.2" />
+  </ItemGroup>
 
 </Project>
