@@ -1,6 +1,23 @@
 using Supabase;
 using Npgsql;
+using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
 var builder = WebApplication.CreateBuilder(args);
+
+//Configuración de RateLimiting
+builder.Services.AddRateLimiter((RateLimiterOptions options) =>
+{
+    options.AddFixedWindowLimiter("LoginLimiter", opt =>
+    {
+        opt.Window = TimeSpan.FromMinutes(1);
+        opt.PermitLimit = 3;
+        opt.QueueLimit = 0;
+    });
+
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+});
+
 
 var supabaseUrl = builder.Configuration["Supabase:Url"];
 var supabaseKey = builder.Configuration["Supabase:Key"];
@@ -26,6 +43,8 @@ catch (Exception ex)
 // --- FIN BLOQUE DE PRUEBA ---*/
 var app = builder.Build();
 
+app.UseRateLimiter();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -34,7 +53,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

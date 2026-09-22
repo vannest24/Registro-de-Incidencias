@@ -29,21 +29,38 @@
               Bienvenido de nuevo
             </h2>
             <p class="mt-4 text-center text-blue-100 font-sans: Arial">Inicia sesión para continuar</p>
-            <form method="POST" action="#" class="mt-8 space-y-6">
+
+            <!-- Errores especificos manejados por el servidor -->
+            @if (!ModelState.IsValid) {
+
+              <div class = "mt-4 rounded-md bg-red-900/40 border border-red-500 px-4 py-3 text-sm text-red-200 font-semibold" role="alert">
+              @Html.ValidationSummary(false)
+              </div>
+            }
+
+
+
+
+            <form id="loginForm" method="post" class="mt-8 space-y-6">
+              @Html.AntiForgeryToken()
+
+
               <div class="rounded-md shadow-sm">
+
                 <div>
                   <label class="sr-only" for="email">Correo electrónico</label>
                   <input
                     placeholder="Correo electrónico"
                     class="appearance-none relative block w-full px-3 py-3 border border-blue-700 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     required=""
-                    autocomplete="email"
+                    autocomplete="username"
                     type="email"
-                    name="email"
+                    name="Email"
                     id="email"
                   />
+
                 </div>
-                <div class="mt-4">
+                <div class="mt-4 relative">
                   <label class="sr-only" for="password">Contraseña</label>
                   <input
                     placeholder="Contraseña"
@@ -51,9 +68,16 @@
                     required=""
                     autocomplete="current-password"
                     type="password"
-                    name="password"
+                    name="Password"
                     id="password"
                   />
+                  <button 
+                    type="button"
+                    id="togglePasswordBtn"
+                    aria-label="Mostrar contraseña"
+                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-blue-100 hover:text-white"
+                    >👁️</button>
+
                 </div>
               </div>
 
@@ -75,15 +99,45 @@
                 <button
                   class="group relative w-full flex justify-center py-3 px-4 border border-indigo-900 text-sm font-medium rounded-md text-gray-900 bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   type="submit"
+                  id="submitBtn"
                 >
                   Iniciar sesión
                 </button>
               </div>
             </form>
+          
+          <!-- Espacio para agregar otros metodos, ejemplo: la recuperacion de contraseña -->
+          
+
           </div>
         </div>
       </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.getElementById('togglePasswordBtn');
+            const loginForm = document.getElementById('loginForm');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Lógica para el botón "Mostrar/Ocultar" contraseña
+            toggleBtn.addEventListener('click', function () {
+                const isPassword = passwordInput.getAttribute('type') === 'password';
+                passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+                this.textContent = isPassword ? '🙈' : '👁️';
+                this.setAttribute('aria-label', isPassword ? 'Ocultar contraseña' : 'Mostrar contraseña');
+            });
+
+            // Feedback: Deshabilitar botón durante el procesamiento
+            loginForm.addEventListener('submit', function (e) {
+                // Usamos setTimeout para dejar que el POST se envíe ANTES de apagar el botón
+                setTimeout(() => {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Iniciando sesión...';
+                }, 10);
+            });
+    </script>
 
 </body>
 </html>
