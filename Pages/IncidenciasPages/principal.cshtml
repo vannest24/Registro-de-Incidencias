@@ -1,0 +1,95 @@
+@page
+@{
+    ViewData["Title"] = "Página de Inicio";
+}
+
+<div class="min-h-screen bg-gray-50 text-gray-800 font-sans flex flex-col">
+    
+    <!-- Navbar / Encabezado -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black text-indigo-600 tracking-tight">
+                MiApp
+            </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8 font-medium text-gray-600">
+                    <li><a href="#" class="hover:text-indigo-600 transition-colors duration-200">Inicio</a></li>
+                    <li><a href="#" class="hover:text-indigo-600 transition-colors duration-200">Servicios</a></li>
+                    <li><a href="#" class="hover:text-indigo-600 transition-colors duration-200">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden text-gray-500 hover:text-indigo-600 focus:outline-none">
+                <!-- Icono de menú móvil (SVG) -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow container mx-auto px-4 py-12">
+        
+        <!-- Sección Hero -->
+        <section class="text-center max-w-3xl mx-auto mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                Construye interfaces increíbles con <span class="text-indigo-600">CSHTML y Tailwind</span>
+            </h1>
+            <p class="text-lg text-gray-600 mb-8">
+                Esta es una plantilla base lista para que la conectes con tus modelos de C#. Modifica las clases de utilidad para adaptar el diseño rápidamente.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#" class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 shadow-md transition-all duration-200">
+                    Empezar ahora
+                </a>
+                <a href="#" class="bg-white text-indigo-600 border border-indigo-200 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 shadow-sm transition-all duration-200">
+                    Saber más
+                </a>
+            </div>
+        </section>
+
+        <!-- Cuadrícula de Tarjetas (Cards) -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Tarjeta 1 -->
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Rendimiento</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Aplicaciones rápidas y optimizadas gracias al renderizado del lado del servidor con ASP.NET Core.
+                </p>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Seguridad</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Integración nativa con los sistemas de autenticación y autorización robustos de C#.
+                </p>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Diseño Responsivo</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Totalmente adaptable a dispositivos móviles utilizando las utilidades de Tailwind CSS.
+                </p>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer / Pie de página utilizando código C# (Razor) para el año actual -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center mt-auto">
+        <p class="text-sm">
+            &copy; @DateTime.Now.Year - MiApp Inc. Todos los derechos reservados.
+        </p>
+    </footer>
+
+</div>
