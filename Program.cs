@@ -24,6 +24,8 @@ var supabaseKey = builder.Configuration["Supabase:Key"];
 
 var options = new SupabaseOptions { AutoConnectRealtime = true };
 
+builder.Services.AddScoped<Supabase.Client>(_ => new Supabase.Client(supabaseUrl, supabaseKey, options));
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 
