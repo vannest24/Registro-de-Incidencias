@@ -1,15 +1,9 @@
-# Compilados de .NET
-bin/
-obj/
+#Documentación del proyecto.
+Documentation/
 
-# Node
-node_modules/
 
 # Archivos de Visual Studio
 .vs/
 *.user
 *.suo
 *.env
-
-# Configuración local (opcional, si tiene secretos)
-appsettings.Development.json
