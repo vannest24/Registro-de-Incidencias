@@ -1,0 +1,15 @@
+services:
+  api:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    container_name: tickets_backend
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    command: dotnet watch run --no-launch-profile --non-interactive

@@ -1,0 +1,30 @@
+services:
+  backend:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    container_name: dev_backend
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    command: dotnet watch run --no-launch-profile --non-interactive
+
+  frontend:
+    image: node:22
+    container_name: dev_frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:5000
+    command: sh -c "npm install && npm run dev -- --host"
+    depends_on:
+      - backend

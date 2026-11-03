@@ -463,11 +463,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/app/backend/backend.csproj",
+      "projectUniqueName": "/app/backend.csproj",
       "projectName": "backend",
-      "projectPath": "/app/backend/backend.csproj",
+      "projectPath": "/app/backend.csproj",
       "packagesPath": "/root/.nuget/packages/",
-      "outputPath": "/app/backend/obj/",
+      "outputPath": "/app/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/root/.nuget/NuGet/NuGet.Config"
